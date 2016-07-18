@@ -13,6 +13,8 @@
 				'um' : "User Management"
 				};
 			var parts = {
+				'mon-cs' : "Current State",
+				'mon-sl' : "System Log",
 				'ds-ss' : "Main Configuration", 
 				'ds-zs' : "Zone Setting",
 				'ds-ps' : "PGM Setting", 
@@ -59,7 +61,8 @@
 						<br/>
 					</div>
 					<div class="leftLinks" id="lp-mon">
-						<br/>
+						<a href="#" onclick="showPage('mon-cs');">Current State</a>
+						<a href="#" onclick="showPage('mon-sl');">System Log</a>
 					</div>
 					<div class="leftLinks" id="lp-ds">
 						<a href="#" onclick="showPage('ds-ss');">System Settings</a>
