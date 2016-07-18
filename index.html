@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href="css-index.css" rel="stylesheet" />
+		<script src="js-jquery-1.2.miner.js"></script>
+		<script type="text/javascript">
+			var tabs = {
+				'home' : "Home", 
+				'mon' : "Monitor",
+				'ds' : "Definition and Settings", 
+				'os' : "Operation Settings", 
+				'um' : "User Management"
+				};
+			var parts = {
+				'ds-ss' : "Main Configuration", 
+				'ds-zs' : "Zone Setting",
+				'ds-ps' : "PGM Setting", 
+				'ds-ec' : "Event Codes", 
+				'ds-rc' : "Report Codes"
+				};
+			
+			var showTab = function(tabcode) {
+				$("div#pageTitle").text( "" );
+				$("td#rightPan > div.pageContent").css("display", "none");
+
+				$("div#leftTitle").text( tabs[tabcode] );
+				$("div#header > h2").text( tabs[tabcode] );
+				$("td#leftPan > div.leftLinks").css("display", "none");
+				$("td#leftPan > div#lp-"+tabcode).css("display", "block");
+			}
+			var showPage = function(pagecode) {
+				$("div#pageTitle").text( parts[pagecode] );
+				$("td#rightPan > div.pageContent").css("display", "none");
+				$("td#rightPan > div#rp-"+pagecode).css("display", "block");
+			}
+		</script>
+	</head>
+	<body>
+	
+		<div id="header">
+			<img src="img-baninab.png" />
+			<h1>BEPA&trade; Security System</h1>
+			|
+			<h2>Home</h2>
+		</div>
+		<div id="navigation">
+			&nbsp; <a href="#" onclick="showTab('home');">Home
+			</a>|<a href="#" onclick="showTab('mon');">Monitor
+			</a>|<a href="#" onclick="showTab('ds');">Definition and Settings
+			</a>|<a href="#" onclick="showTab('os');">Operation Settings
+			</a>|<a href="#" onclick="showTab('um');">User Management</a>
+		</div>
+		<table id="main">
+			<tr>
+				<td id="leftPan">
+					<div id="leftTitle">Home</div>
+					<div class="leftLinks" id="lp-home">
+						<br/>
+					</div>
+					<div class="leftLinks" id="lp-mon">
+						<br/>
+					</div>
+					<div class="leftLinks" id="lp-ds">
+						<a href="#" onclick="showPage('ds-ss');">System Settings</a>
+						<a href="#" onclick="showPage('ds-zs');">Zone Setting</a>
+						<a href="#" onclick="showPage('ds-ps');">PGM Setting</a>
+						<a href="#" onclick="showPage('ds-ec');">Event Codes</a>
+						<a href="#" onclick="showPage('ds-rc');">Report Codes</a>
+					</div>
+					<div class="leftLinks" id="lp-os">
+						<br/>
+					</div>
+					<div class="leftLinks" id="lp-um">
+						<br/>
+					</div>
+				</td>
+				<td id="rightPan">
+					<div id="pageTitle"></div>
+					<div class="pageContent" id="rp-ds-ss">
+						<form method="post" action="#">
+						<fieldset><legend>Basic</legend>
+							<div class="formLabel">Active Zones:</div>
+								<select name="active-zones">
+									<option value=1>1</option>
+									<option value=2>2</option>
+									<option value=3>3</option>
+									<option value=4>4</option>
+									<option value=5>5</option>
+									<option value=6>6</option>
+									<option value=7>7</option>
+									<option value=8>8</option>
+								</select><br/>
+							<div class="formLabel">Active PGMs:</div>
+								<select name="active-pgms">
+									<option value=1>1</option>
+									<option value=2>2</option>
+									<option value=3>3</option>
+									<option value=4>4</option>
+									<option value=5>5</option>
+									<option value=6>6</option>
+									<option value=7>7</option>
+									<option value=8>8</option>
+								</select><br/>
+							<div class="formLabel">Date:</div>
+								<input type="number" min="2016" max="3000" step="1" name="date-year" /> /
+								<input type="number" min="1" max="12" step="1" name="date-month" /> /
+								<input type="number" min="1" max="59" step="31" name="date-day" />
+
+							<div class="formLabel">Time:</div>
+								<input type="number" min="1" max="24" step="1" name="time-hour" /> :
+								<input type="number" min="0" max="59" step="1" name="time-minute" />
+						</fieldset>
+						<fieldset><legend>Timer Settings</legend>
+							<br/>
+						</fieldset>
+						<fieldset><legend>Communication Settings</legend>
+							<br/>
+						</fieldset>
+						<input type="submit" class="submitButton" value=" save " />
+						</form>
+					</div>
+					<div class="pageContent" id="rp-ds-zs">
+						<form method="post" action="#">
+						<fieldset><legend>Basic</legend>
+							<br/>
+							<br/>
+						</fieldset>
+						<fieldset><legend>Zone Timer</legend>
+							<br/>
+							<br/>
+						</fieldset>
+						<fieldset><legend>Reports and Labels</legend>
+							<br/>
+							<br/>
+						</fieldset>
+						<input type="submit" class="submitButton" value=" save " />
+						</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div id="footer">&copy; All Rights Reserved by BANINAB co. ltd. 2016</div>
+	
+	</body>
+</html>

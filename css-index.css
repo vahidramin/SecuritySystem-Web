@@ -1,0 +1,140 @@
+	* {
+		font-family: verdana;
+		font-size: 12px;
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		background-color: #e0e0e0;
+	}
+	div#header {
+		margin: 0 auto;
+		width: 900px;
+		height: 80px;
+		color: #fff;
+		line-height: 80px;
+		border-bottom: 1px solid #fff;
+		background-color: #82c341;
+		background: linear-gradient(to right,#008579,#52c06b);
+	}
+		div#header > img {
+			height: 50px;
+			vertical-align: middle;
+			margin: 0 10px;
+		}
+		div#header > h1 {
+			display: inline;
+			font-size: 16px;
+			font-style: italic;
+			margin: 0 30px 0 10px;
+		}
+		div#header > h2 {
+			display: inline;
+			font-size: 13px;
+			font-weight: 300;
+			margin-left: 30px;
+		}
+	div#navigation {
+		margin: 0 auto;
+		width: 900px;
+		height: 25px;
+		line-height: 25px;
+		background-color: #bbb;
+		border-bottom: 1px solid gray;
+	}
+		div#navigation > a:link, div#navigation > a:visited {
+			padding: 4px 10px;
+			text-decoration: none;
+			color: #444;
+		}
+		div#navigation > a:hover, div#navigation > a:active {
+			color: #111;
+			background-color:#ddd;
+		}
+	table#main {
+		margin: 0 auto;
+		width: 900px;
+		height: 450px;
+		background-color: #f5f5f5;
+		border-spacing:0;
+	}
+		table#main td {
+			vertical-align: top;
+		}
+		td#leftPan {
+			width: 200px;
+			background-color: #6c8;
+			*background: linear-gradient(to bottom,#008579,#52c06b);
+		}
+		div#leftTitle {
+			padding: 5px;
+			color: #eee;
+			font-weight: 600;
+			background-color: #005522;
+		}
+		div.leftLinks {
+			display: none;
+			text-align: right;
+			line-height: 25px;
+		}
+		div.leftLinks > a {
+			font-size: 11px;
+			font-weight: bold;
+			margin-right: 5px;
+			display: block;
+			text-decoration: none;
+			color: #353535;
+		}
+		div.leftLinks > a:hover {
+			text-decoration: underline;
+		}
+		div#pageTitle {
+			padding: 0 10px;
+			height: 25px;
+			line-height: 25px;
+			font-weight: bold;
+			color: #008579;
+			border-bottom: 1px solid #ccc;
+		}
+		div.pageContent {
+			display: none;
+			padding: 5px;
+			line-height: 25px;
+		}
+		div.pageContent form fieldset {
+			border: 1px solid #888;
+			line-height: 30px;
+		}
+		div.pageContent form legend {
+			    padding: 0 10px;
+				margin-left: 5px;
+				font-weight: bold;
+		}
+		div.pageContent form div.formLabel {
+			display: inline-block;
+			width: 95px;
+			vertical-align: top;
+			text-align: right;
+			padding-right: 5px;
+		}
+		div.pageContent form input {
+			width: 50px;
+			height: 20px;
+		}
+		div.pageContent form input.submitButton {
+			float: right;
+			margin: 10px 50px;
+			width: 50px;
+			height: 25px;
+			cursor: pointer;
+		}
+	div#footer {
+		margin: 0 auto;
+		width: 900px;
+		height: 25px;
+		background-color: #444;
+		color: #eee;
+		font-size: 11px;
+		text-align: center;
+		line-height: 25px;
+	}
