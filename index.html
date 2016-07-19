@@ -106,13 +106,13 @@
 									<option value=8>8</option>
 								</select><br/>
 							<div class="formLabel">Date:</div>
-								<input type="number" min="2016" max="3000" step="1" name="date-year" /> /
-								<input type="number" min="1" max="12" step="1" name="date-month" /> /
-								<input type="number" min="1" max="59" step="31" name="date-day" />
+								<input type="number" class="miniText" min="2016" max="3000" step="1" id="date-year" /> /
+								<input type="number" class="miniText" min="1" max="12" step="1" id="date-month" /> /
+								<input type="number" class="miniText" min="1" max="59" step="31" id="date-day" />
 
 							<div class="formLabel">Time:</div>
-								<input type="number" min="1" max="24" step="1" name="time-hour" /> :
-								<input type="number" min="0" max="59" step="1" name="time-minute" />
+								<input type="number" class="miniText" min="1" max="24" step="1" id="time-hour" /> :
+								<input type="number" class="miniText" min="0" max="59" step="1" id="time-minute" />
 						</fieldset>
 						<fieldset><legend>Timer Settings</legend>
 							<br/>
@@ -125,19 +125,98 @@
 					</div>
 					<div class="pageContent" id="rp-ds-zs">
 						<form method="post" action="#">
-						<fieldset><legend>Basic</legend>
-							<br/>
-							<br/>
-						</fieldset>
-						<fieldset><legend>Zone Timer</legend>
-							<br/>
-							<br/>
-						</fieldset>
-						<fieldset><legend>Reports and Labels</legend>
-							<br/>
-							<br/>
-						</fieldset>
-						<input type="submit" class="submitButton" value=" save " />
+							<fieldset><legend>Parameters</legend>
+								<div class="formLabel">Zone Number:</div><select id="zone-number">
+										<option value=0 selected disabled >Select zone ...</option>
+										<option value=1>1</option>
+										<option value=2>2</option>
+										<option value=3>3</option>
+										<option value=4>4</option>
+										<option value=5>5</option>
+										<option value=6>6</option>
+										<option value=7>7</option>
+										<option value=8>8</option>
+									</select>
+								<div class="formLabel">Zone label:</div><input type="text" maxlength="16" id="zone-label" /><span class="hint">(max 16 char)</span>
+								<br/>
+								<div class="formLabel">Type:</div><select id="zone-type">
+										<option value="NO">Normaly Open</option>
+										<option value="NC">Normaly Close</option>
+									</select>
+								<div class="formLabel">Partition:</div><select id="zone-partition">
+										<option value=1>Partition 1</option>
+										<option value=2>Partition 2</option>
+										<option value=3>Both</option>
+									</select>
+								<br/>
+								<div class="formLabel">Delay:</div><input type="text" class="miniText" id="zone-delay" /><span class="hint">(Seconds)</span>
+								<div class="formLabel">Timer:</div><input type="number" class="miniText" min="0" max="255" step="1" id="zone-timer" /><span class="hint">({0 - 255} x 10 mSec)</span>
+								<br/>
+								<div class="formLabel"></div><input type="checkbox" id="zone-24h" value="1" /> 24 Hour &nbsp;&nbsp;&nbsp;
+								<input type="checkbox" id="zone-supervisory" value="1" /> Supervisory
+								<br/>
+								<div class="formLabel">Report Code:</div>
+								<div class="formBox">
+									&nbsp;&nbsp;Alarm 	<select id="zone-report-alarm">
+												<option value="0" selected >Select Report ...</option>
+												<option value="01">01 - Medical Alarm</option>
+												<option value="02">02 - Pendant Transmitter</option>
+												<option value="03">03 - Fail to Report</option>
+												<option value="04">04 - Fire Alarm</option>
+												<option value="05">05 - Smoke</option>
+												<option value="06">06 - Combustion</option>
+											</select>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alarm Restore <select id="zone-report-alarmrestore">
+												<option value="0" selected >Select Report ...</option>
+												<option value="01">01 - Medical Alarm</option>
+												<option value="02">02 - Pendant Transmitter</option>
+												<option value="03">03 - Fail to Report</option>
+												<option value="04">04 - Fire Alarm</option>
+												<option value="05">05 - Smoke</option>
+												<option value="06">06 - Combustion</option>
+											</select>
+									<br/>
+									Tamper 	<select id="zone-report-tamper">
+												<option value="0" selected >Select Report ...</option>
+												<option value="01">01 - Medical Alarm</option>
+												<option value="02">02 - Pendant Transmitter</option>
+												<option value="03">03 - Fail to Report</option>
+												<option value="04">04 - Fire Alarm</option>
+												<option value="05">05 - Smoke</option>
+												<option value="06">06 - Combustion</option>
+											</select>
+									&nbsp;&nbsp;
+									Tamper Restore 	<select id="zone-report-tamperrestore">
+												<option value="0" selected >Select Report ...</option>
+												<option value="01">01 - Medical Alarm</option>
+												<option value="02">02 - Pendant Transmitter</option>
+												<option value="03">03 - Fail to Report</option>
+												<option value="04">04 - Fire Alarm</option>
+												<option value="05">05 - Smoke</option>
+												<option value="06">06 - Combustion</option>
+											</select>
+								</div>
+								<br/><br/>
+							</fieldset>
+							<fieldset><legend>Options</legend>
+								<div class="formBox">
+									<input type="checkbox" id="zone-opt-azs" value="1" /> Auto Zone Shutdown
+									<input type="checkbox" id="zone-opt-bpz" value="1" /> Bypassable Zone
+									<input type="checkbox" id="zone-opt-rfz" value="1" /> RF Zone Supervision
+									<input type="checkbox" id="zone-opt-intz" value="1" /> Intellizone
+									<input type="checkbox" id="zone-opt-dat" value="1" /> Delay Arm Transmission
+									<input type="checkbox" id="zone-opt-fz" value="1" /> Force Zone
+								</div>
+								<br/>
+								<div class="formLabel">Alarm Type:</div><select id="zone-alarm">
+										<option value="00">Audible Alarm</option>
+										<option value="01">Pulsed Alarm</option>
+										<option value="10">Silent Alarm</option>
+										<option value="11">Report Only</option>
+									</select>
+								<br/><br/>
+							</fieldset>
+							<input type="submit" class="submitButton" value=" save " />
 						</form>
 					</div>
 				</td>
