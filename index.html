@@ -36,6 +36,38 @@
 				$("td#rightPan > div.pageContent").css("display", "none");
 				$("td#rightPan > div#rp-"+pagecode).css("display", "block");
 			}
+			
+			var formSubmit = function (fid) {
+				//event.preventDefault();
+				var formValues = new Array();
+				$("div#"+fid+" form input:text").each( function() {
+					formValues[$(this).attr('id')] = $(this).val();
+				});
+				$("div#"+fid+" form input:checkbox").each( function() {
+					formValues[$(this).attr('id')] = ($(this).is(':checked'))? 1:0;
+				});
+				$("div#"+fid+" form input[type='number']").each( function() {
+					formValues[$(this).attr('id')] = $(this).val();
+				});
+				$("div#"+fid+" form select").each( function() {
+					formValues[$(this).attr('id')] = $(this).val();
+				});
+				
+				var ajaxData;
+				for(key in formValues)
+					ajaxData += "&"+key+"="+formValues[key];
+				
+				$.ajax({
+					url: "server.html?"+ajaxData,
+					method: "GET",
+					success: function(result){
+						$("#div1").html(result);
+					}
+				});
+				
+				//alert(JSON.stringify(formValues));
+			}
+
 		</script>
 	</head>
 	<body>
@@ -81,7 +113,7 @@
 				<td id="rightPan">
 					<div id="pageTitle"></div>
 					<div class="pageContent" id="rp-ds-ss">
-						<form method="post" action="#">
+						<form action="#">
 						<fieldset><legend>Basic</legend>
 							<div class="formLabel">Active Zones:</div>
 								<select name="active-zones">
@@ -124,7 +156,7 @@
 						</form>
 					</div>
 					<div class="pageContent" id="rp-ds-zs">
-						<form method="post" action="#">
+						<form data-id="rp-ds-zs" >
 							<fieldset><legend>Parameters</legend>
 								<div class="formLabel">Zone Number:</div><select id="zone-number">
 										<option value=0 selected disabled >Select zone ...</option>
@@ -216,7 +248,7 @@
 									</select>
 								<br/><br/>
 							</fieldset>
-							<input type="submit" class="submitButton" value=" save " />
+							<input type="submit" class="submitButton" value=" save " onclick="formSubmit('rp-ds-zs');" />
 						</form>
 					</div>
 				</td>
