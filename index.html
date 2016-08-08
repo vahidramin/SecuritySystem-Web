@@ -104,16 +104,16 @@
 						<a href="#" onclick="showPage('ds-rc');">Report Codes</a>
 					</div>
 					<div class="leftLinks" id="lp-os">
-						<br/>
+						<a href="#" onclick="showPage('os-so');">System Operation</a>
 					</div>
 					<div class="leftLinks" id="lp-um">
-						<br/>
+						<a href="#" onclick="showPage('um-au');">Add New User</a>
 					</div>
 				</td>
 				<td id="rightPan">
 					<div id="pageTitle"></div>
 					<div class="pageContent" id="rp-ds-ss">
-						<form action="#">
+						<form data-id="rp-ds-sd" >
 						<fieldset><legend>Basic</legend>
 							<div class="formLabel">Active Zones:</div>
 								<select name="active-zones">
@@ -146,10 +146,30 @@
 								<input type="number" class="miniText" min="1" max="24" step="1" id="time-hour" /> :
 								<input type="number" class="miniText" min="0" max="59" step="1" id="time-minute" />
 						</fieldset>
-						<fieldset><legend>Timer Settings</legend>
-							<br/>
-						</fieldset>
 						<fieldset><legend>Communication Settings</legend>
+							<div class="formLabel">User Call:</div>
+								<select name="user-no">
+									<option value=1>Installer</option>
+									<option value=2>Master</option>
+									<option value=3>User1</option>
+									<option value=4>user2</option>
+									<option value=5>user3</option>
+									<option value=6>user4</option>
+								</select>
+								&nbsp; SIM 1: <input type="text" maxlength="11" id="CallNo-1" />
+								&nbsp; SIM 2: <input type="text" maxlength="11" id="CallNo-2" /><span class="hint">(11 digits)</span>
+							<br/>
+							<div class="formLabel">Arm Number :</div>
+								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+								&nbsp; &nbsp;&nbsp;
+								SIM 1: <input type="text" maxlength="11" id="armNo-1" />
+								&nbsp; SIM 2: <input type="text" maxlength="11" id="armNo-2" /><span class="hint">(11 digits)</span>
+							<br/>
+							<div class="formLabel">Tel Number :</div>
+								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+								&nbsp; &nbsp; &nbsp;&nbsp;
+								Tel 1: <input type="text" maxlength="11" id="telNo-1" />
+								&nbsp; &nbsp;Tel 2: <input type="text" maxlength="11" id="telNo-2" /><span class="hint">(for Ademco)</span>
 							<br/>
 						</fieldset>
 						<input type="submit" class="submitButton" value=" save " />
@@ -246,6 +266,151 @@
 										<option value="10">Silent Alarm</option>
 										<option value="11">Report Only</option>
 									</select>
+								<br/><br/>
+							</fieldset>
+							<input type="submit" class="submitButton" value=" save " onclick="formSubmit('rp-ds-zs');" />
+						</form>
+					</div>
+					<div class="pageContent" id="rp-ds-ps">
+						<form data-id="rp-ds-ps" >
+							<fieldset><legend>Parameters</legend>
+								<div class="formLabel">PGM Number:</div><select id="pgm-number">
+										<option value=0 selected disabled >Select PGM ...</option>
+										<option value=1>1</option>
+										<option value=2>2</option>
+										<option value=3>3</option>
+										<option value=4>4</option>
+										<option value=5>5</option>
+										<option value=6>6</option>
+										<option value=7>7</option>
+										<option value=8>8</option>
+									</select>
+								&nbsp;<div class="formLabel">PGM label:</div><input type="text" maxlength="16" id="pgm-label" /><span class="hint">(max 16 char)</span>
+								<br/>
+								<div class="formLabel">Type:</div><select id="pgm-type">
+										<option value="NO">Normaly Open</option>
+										<option value="NC">Normaly Close</option>
+									</select>
+								<div class="formLabel">Serial Number:</div><input type="text" maxlength="16" id="pgm-serial" />
+								<br/>
+								<div class="formLabel">Delay:</div><input type="text" class="miniText" id="pgm-delay" /><span class="hint">(Seconds)</span>
+								<div class="formLabel">Timer:</div><input type="number" class="miniText" min="0" max="255" step="1" id="pgm-timer" /><span class="hint">({0 - 255} x 10 mSec)</span>
+								<br/>
+								<div class="formLabel"></div><input type="checkbox" id="pgm-supervisory" value="1" /> Supervisory
+								<br/>
+								<div class="formLabel">Report Code:</div>
+								<div class="formBox">
+									&nbsp;&nbsp;Activate 	<select id="pgm-report-active">
+												<option value="0" selected >Select Report ...</option>
+												<option value="01">01 - Medical Alarm</option>
+												<option value="02">02 - Pendant Transmitter</option>
+												<option value="03">03 - Fail to Report</option>
+												<option value="04">04 - Fire Alarm</option>
+												<option value="05">05 - Smoke</option>
+												<option value="06">06 - Combustion</option>
+											</select>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deactivate <select id="pgm-report-deactive">
+												<option value="0" selected >Select Report ...</option>
+												<option value="01">01 - Medical Alarm</option>
+												<option value="02">02 - Pendant Transmitter</option>
+												<option value="03">03 - Fail to Report</option>
+												<option value="04">04 - Fire Alarm</option>
+												<option value="05">05 - Smoke</option>
+												<option value="06">06 - Combustion</option>
+											</select>
+									<br/>
+								</div>
+								<br/><br/>
+							</fieldset>
+							<input type="submit" class="submitButton" value=" save " onclick="formSubmit('rp-ds-zs');" />
+						</form>
+					</div>
+					<div class="pageContent" id="rp-os-so">
+						<form data-id="rp-os-so" >
+							<fieldset><legend>Zone</legend>
+								<div class="formLabel">Bypass:</div><select id="zone-number">
+										<option value=0 selected disabled >Select Zone ...</option>
+										<option value=1>1</option>
+										<option value=2>2</option>
+										<option value=3>3</option>
+										<option value=4>4</option>
+										<option value=5>5</option>
+										<option value=6>6</option>
+										<option value=7>7</option>
+										<option value=8>8</option>
+									</select>
+									&nbsp;
+									<input type="checkbox" id="zone-bypass" value="1" /> Bypass
+								<br/><br/>
+							</fieldset>
+							<fieldset><legend>Arming</legend>
+								<div class="formLabel">Partition:</div><select id="partition-number">
+										<option value=0 selected >Select Partition ...</option>
+										<option value=1>Partition 1</option>
+										<option value=2>Partition 2</option>
+										<option value=3>Both</option>
+									</select>
+								<div class="formLabel">Arm State:</div><select id="arm-state">
+										<option value=0 selected >Off</option>
+										<option value=1>Stay</option>
+										<option value=2>Sleep</option>
+										<option value=3>Full</option>
+									</select>
+								<br/><br/>
+							</fieldset>
+							<fieldset><legend>Keypad</legend>
+								<div class="formLabel">Contrast:</div><select id="keypad-contrast">
+										<option value=0 >0</option>
+										<option value=25 >25</option>
+										<option value=50 selected >50</option>
+										<option value=75>75</option>
+										<option value=100>100</option>
+									</select>
+								<div class="formLabel">Volume Level:</div><input type="number" class="miniText" min="1" max="10" step="1" value=8 id="keypad-vol" />
+								<br/><br/>
+							</fieldset>
+							<input type="submit" class="submitButton" value=" save " onclick="formSubmit('rp-ds-zs');" />
+						</form>
+					</div>
+					<div class="pageContent" id="rp-um-au">
+						<form data-id="rp-um-au" >
+							<fieldset><legend>New User</legend>
+								<div class="formLabel">User Code:</div><input type="text" class="miniText" id="user-code" />
+								<div class="formLabel">User Name:</div><input type="text" id="user-name" maxlength="16" /><span class="hint">(16 characters)</span>
+								<br/>
+								<div class="formBox" style="padding-left:85px;">
+									<input type="checkbox" id="user-opt-p1" value="1" /> partition 1 Access
+									<input type="checkbox" id="user-opt-p2" value="1" /> partition 2 Access
+									<input type="checkbox" id="user-opt-byp" value="1" /> Baypass
+									<input type="checkbox" id="user-opt-arms" value="1" /> Stay/Sleep Arming
+									<br/>
+									<input type="checkbox" id="user-opt-armf" value="1" /> Force Arming
+									<input type="checkbox" id="user-opt-arm" value="1" /> Arm Only
+									<input type="checkbox" id="user-opt-pgm" value="1" /> PGM Activation Only
+									<input type="checkbox" id="user-opt-duress" value="1" /> Duress
+								</div>
+								<br/>
+								<div class="formLabel">Arm Report:</div>
+								<select id="user-report-arm">
+									<option value="0" selected >Select Report ...</option>
+									<option value="01">01 - Medical Alarm</option>
+									<option value="02">02 - Pendant Transmitter</option>
+									<option value="03">03 - Fail to Report</option>
+									<option value="04">04 - Fire Alarm</option>
+									<option value="05">05 - Smoke</option>
+									<option value="06">06 - Combustion</option>
+								</select>
+								<div class="formLabel">Disarm Report:</div>
+								<select id="user-report-disarm">
+									<option value="0" selected >Select Report ...</option>
+									<option value="01">01 - Medical Alarm</option>
+									<option value="02">02 - Pendant Transmitter</option>
+									<option value="03">03 - Fail to Report</option>
+									<option value="04">04 - Fire Alarm</option>
+									<option value="05">05 - Smoke</option>
+									<option value="06">06 - Combustion</option>
+								</select>
+
 								<br/><br/>
 							</fieldset>
 							<input type="submit" class="submitButton" value=" save " onclick="formSubmit('rp-ds-zs');" />
